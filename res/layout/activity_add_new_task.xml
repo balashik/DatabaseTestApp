@@ -34,16 +34,6 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/chooseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/taskDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:onClick="setDate"
-        android:text="pick date" />
-
-    <Button
         android:id="@+id/chooseHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,5 +42,33 @@
         android:layout_centerVertical="true"
         android:onClick="setHour"
         android:text="set hour" />
+
+    <TextView
+        android:id="@+id/pickedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseDate"
+        android:layout_centerHorizontal="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/chooseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:onClick="setDate"
+        android:text="pick date" />
+
+    <TextView
+        android:id="@+id/pickedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pickedDate"
+        android:layout_below="@+id/chooseHour"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

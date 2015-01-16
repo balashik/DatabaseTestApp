@@ -46,7 +46,6 @@ public class AddNewTask extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				DateFormat df= new SimpleDateFormat();
 				TextView twTitle = (TextView) findViewById(R.id.taskTitle);
 				TextView twDescription = (TextView) findViewById(R.id.taskDescription);
 				String s_taskTitle = twTitle.getText().toString();
@@ -72,7 +71,9 @@ public class AddNewTask extends Activity {
 			// TODO Auto-generated method stub
 			
 			date = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
-			Toast.makeText(getBaseContext(), date, Toast.LENGTH_LONG).show();
+			TextView dateView = (TextView)findViewById(R.id.pickedDate);
+			dateView.setText(date);
+			//Toast.makeText(getBaseContext(), date, Toast.LENGTH_LONG).show();
 		}
 	};
 	protected Dialog onCreateDialog(int id) {
@@ -85,15 +86,11 @@ public class AddNewTask extends Activity {
 	
 
 	public void setHour(View v) {
-		System.out.println("setHour");
+	
 	}
 
 	public void setDate(View v) {
 
-//		cDay = Calendar.get(Calendar.DAY_OF_MONTH);
-//		cMonth = myCal.get(Calendar.MONTH)+1;
-//		cYear = myCal.get(Calendar.YEAR);
-		//System.out.println("day:" + cDay + "month" + cMonth + "year" + cYear);
 		showDialog(dialog_id);
 
 	}
