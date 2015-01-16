@@ -30,6 +30,26 @@
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/largeTitle"
+            android:layout_alignBottom="@+id/largeTitle"
+            android:layout_marginLeft="44dp"
+            android:layout_toRightOf="@+id/largeTitle"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dateTextView"
+            android:layout_alignTop="@+id/smallDescription"
+            android:layout_marginLeft="22dp"
+            android:text="TextView" />
+
     </RelativeLayout>
 
 </LinearLayout>

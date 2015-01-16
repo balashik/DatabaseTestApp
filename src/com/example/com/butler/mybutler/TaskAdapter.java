@@ -40,7 +40,8 @@ public long getItemId(int position) {
 
 public static class ViewHolder {
     public TextView display_title;
-    public TextView display_description;             
+    public TextView display_description; 
+    public TextView display_date;
 
 }
 
@@ -54,6 +55,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
             holder.display_title = (TextView) vi.findViewById(R.id.largeTitle);
             holder.display_description = (TextView) vi.findViewById(R.id.smallDescription);
+            holder.display_date = (TextView) vi.findViewById(R.id.dateTextView);
 
 
             vi.setTag(holder);
@@ -65,6 +67,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
         holder.display_title.setText(lTasks.get(position).getTitle());
         holder.display_description.setText(lTasks.get(position).getDescription());
+        holder.display_date.setText(lTasks.get(position).getdate());
 
 
     } catch (Exception e) {

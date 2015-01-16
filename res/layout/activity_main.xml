@@ -15,6 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Add New Task!" />
+    
+    
 
     <ListView
         android:id="@+id/list_of_tasks"

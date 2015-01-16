@@ -52,12 +52,13 @@ public class MainActivity extends Activity {
 		Cursor cursor = mydb.getAllRows();
 		if(cursor.moveToFirst()){
 				do{
-					int id = cursor.getInt(0);
-					String title = cursor.getString(1);
-					String description = cursor.getString(2);
+					int id = cursor.getInt(DBAdapter.COL_ROWID);
+					String title = cursor.getString(DBAdapter.COL_TASKTITLE);
+					String description = cursor.getString(DBAdapter.COL_TASKDESCRIPTION);
+					String date = cursor.getString(DBAdapter.COL_DATE);
 					
-					tasks.add(new Task(id, title,description));
-					System.out.println("title: "+ title + " description: "+ description);
+					tasks.add(new Task(id, title,description,date));
+					//System.out.println("title: "+ title + " description: "+ description +"date:"+ date);
 					
 				}while(cursor.moveToNext());
 			}

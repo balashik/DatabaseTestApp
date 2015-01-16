@@ -5,14 +5,16 @@ public class Task {
 	private int id;
 	private String title;
 	private String description;
+	private String date;
 
 	
 
-	public Task(int id,String title, String description) {
+	public Task(int id,String title, String description ,String date) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.date = date;
 	}
 
 	public int getId() {
@@ -37,5 +39,13 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getdate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

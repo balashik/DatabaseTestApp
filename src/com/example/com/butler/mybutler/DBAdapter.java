@@ -1,5 +1,7 @@
 package com.example.com.butler.mybutler;
 
+
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -28,7 +30,7 @@ public class DBAdapter {
 	// TODO: Setup your fields here:
 	public static final String KEY_TASKTITLE = "tasktitle";
 	public static final String KEY_TASKDESCRIPTION = "taskdescription";
-	public static final String KEY_DATE = "date";
+	public static final String KEY_DATE = "taskdate";
 	public static final String KEY_TIME = "time";
 
 	
@@ -39,13 +41,13 @@ public class DBAdapter {
 	public static final int COL_TIME = 4;
 
 	
-	public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASKTITLE, KEY_TASKDESCRIPTION};
+	public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASKTITLE, KEY_TASKDESCRIPTION,KEY_DATE};
 	
 	// DB info: it's name, and the table we are using (just one).
 	public static final String DATABASE_NAME = "MyDb";
 	public static final String DATABASE_TABLE = "mainTable";
 	// Track DB version if a new version of your app changes the format.
-	public static final int DATABASE_VERSION = 2;	
+	public static final int DATABASE_VERSION = 4;	
 	// Create new table SQLite statement
 	private static final String DATABASE_CREATE_SQL = 
 			"create table " + DATABASE_TABLE 
@@ -62,7 +64,8 @@ public class DBAdapter {
 			//  - "not null" means it is a required field (must be given a value).
 			// NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
 			+ KEY_TASKTITLE + " text not null, "
-			+ KEY_TASKDESCRIPTION + " text not null "
+			+ KEY_TASKDESCRIPTION + " text not null, "
+			+ KEY_DATE + " text not null "
 			
 			// Rest  of creation:
 			+ ");";
@@ -94,16 +97,18 @@ public class DBAdapter {
 	}
 	
 	// Add a new set of values to the database.
-	public long insertRow(String title, String description) {
+	public long insertRow(String title, String description, String date) {
 		/*
 		 * CHANGE 3:
 		 */		
 		// TODO: Update data in the row with new fields.
 		// TODO: Also change the function's arguments to be what you need!
 		// Create row's data:
+		
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(KEY_TASKTITLE, title);
 		initialValues.put(KEY_TASKDESCRIPTION, description);
+		initialValues.put(KEY_DATE, date);
 		
 		// Insert it into the database.
 		return db.insert(DATABASE_TABLE, null, initialValues);
@@ -149,7 +154,7 @@ public class DBAdapter {
 	}
 	
 	// Change an existing row to be equal to new data.
-	public boolean updateRow(long rowId, String title, String description) {
+	public boolean updateRow(long rowId, String title, String description,String date) {
 		String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -161,6 +166,7 @@ public class DBAdapter {
 		ContentValues newValues = new ContentValues();
 		newValues.put(KEY_TASKTITLE, title);
 		newValues.put(KEY_TASKDESCRIPTION, description);
+		newValues.put(KEY_DATE,date);
 		
 		// Insert it into the database.
 		return db.update(DATABASE_TABLE, newValues, where, null) != 0;
