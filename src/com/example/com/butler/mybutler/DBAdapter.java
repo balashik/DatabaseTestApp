@@ -31,7 +31,7 @@ public class DBAdapter {
 	public static final String KEY_TASKTITLE = "tasktitle";
 	public static final String KEY_TASKDESCRIPTION = "taskdescription";
 	public static final String KEY_DATE = "taskdate";
-	public static final String KEY_TIME = "time";
+	public static final String KEY_TIME = "tasktime";
 
 	
 	// TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
@@ -41,13 +41,13 @@ public class DBAdapter {
 	public static final int COL_TIME = 4;
 
 	
-	public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASKTITLE, KEY_TASKDESCRIPTION,KEY_DATE};
+	public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_TASKTITLE, KEY_TASKDESCRIPTION,KEY_DATE,KEY_TIME};
 	
 	// DB info: it's name, and the table we are using (just one).
 	public static final String DATABASE_NAME = "MyDb";
 	public static final String DATABASE_TABLE = "mainTable";
 	// Track DB version if a new version of your app changes the format.
-	public static final int DATABASE_VERSION = 4;	
+	public static final int DATABASE_VERSION = 6;	
 	// Create new table SQLite statement
 	private static final String DATABASE_CREATE_SQL = 
 			"create table " + DATABASE_TABLE 
@@ -65,7 +65,8 @@ public class DBAdapter {
 			// NOTE: All must be comma separated (end of line!) Last one must have NO comma!!
 			+ KEY_TASKTITLE + " text not null, "
 			+ KEY_TASKDESCRIPTION + " text not null, "
-			+ KEY_DATE + " text not null "
+			+ KEY_DATE + " text not null, "
+			+ KEY_TIME + " text not null "
 			
 			// Rest  of creation:
 			+ ");";
@@ -97,7 +98,7 @@ public class DBAdapter {
 	}
 	
 	// Add a new set of values to the database.
-	public long insertRow(String title, String description, String date) {
+	public long insertRow(String title, String description, String date, String time) {
 		/*
 		 * CHANGE 3:
 		 */		
@@ -109,6 +110,7 @@ public class DBAdapter {
 		initialValues.put(KEY_TASKTITLE, title);
 		initialValues.put(KEY_TASKDESCRIPTION, description);
 		initialValues.put(KEY_DATE, date);
+		initialValues.put(KEY_TIME, time);
 		
 		// Insert it into the database.
 		return db.insert(DATABASE_TABLE, null, initialValues);
@@ -154,7 +156,7 @@ public class DBAdapter {
 	}
 	
 	// Change an existing row to be equal to new data.
-	public boolean updateRow(long rowId, String title, String description,String date) {
+	public boolean updateRow(long rowId, String title, String description,String date,String time) {
 		String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -167,6 +169,7 @@ public class DBAdapter {
 		newValues.put(KEY_TASKTITLE, title);
 		newValues.put(KEY_TASKDESCRIPTION, description);
 		newValues.put(KEY_DATE,date);
+		newValues.put(KEY_TIME, time);
 		
 		// Insert it into the database.
 		return db.update(DATABASE_TABLE, newValues, where, null) != 0;

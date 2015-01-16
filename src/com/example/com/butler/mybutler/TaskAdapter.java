@@ -42,6 +42,7 @@ public static class ViewHolder {
     public TextView display_title;
     public TextView display_description; 
     public TextView display_date;
+    public TextView display_time;
 
 }
 
@@ -56,6 +57,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
             holder.display_title = (TextView) vi.findViewById(R.id.largeTitle);
             holder.display_description = (TextView) vi.findViewById(R.id.smallDescription);
             holder.display_date = (TextView) vi.findViewById(R.id.dateTextView);
+            holder.display_time = (TextView) vi.findViewById(R.id.timeTextView);
 
 
             vi.setTag(holder);
@@ -67,7 +69,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
         holder.display_title.setText(lTasks.get(position).getTitle());
         holder.display_description.setText(lTasks.get(position).getDescription());
-        holder.display_date.setText(lTasks.get(position).getdate());
+        holder.display_date.setText(lTasks.get(position).getDate());
+        holder.display_time.setText(lTasks.get(position).getTime());
 
 
     } catch (Exception e) {

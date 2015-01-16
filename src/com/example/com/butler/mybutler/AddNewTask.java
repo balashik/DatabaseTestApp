@@ -11,19 +11,22 @@ import com.example.com.butler.mybutler.R;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.provider.CalendarContract.CalendarAlerts;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class AddNewTask extends Activity {
 	DBAdapter mydb;
 
-	static final int dialog_id = 1;
+	//static final int dialog_id = 1;
 	String date;
+	String time;
 	//Calendar myCal = Calendar.getInstance();
 
 	@Override
@@ -51,7 +54,7 @@ public class AddNewTask extends Activity {
 				String s_taskTitle = twTitle.getText().toString();
 				String s_taskDescription = twDescription.getText().toString();
 				System.out.println(date.toString());
-				mydb.insertRow(s_taskTitle, s_taskDescription,date);
+				mydb.insertRow(s_taskTitle, s_taskDescription,date,time);
 				finish();
 			}
 		});
@@ -73,25 +76,42 @@ public class AddNewTask extends Activity {
 			date = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
 			TextView dateView = (TextView)findViewById(R.id.pickedDate);
 			dateView.setText(date);
-			//Toast.makeText(getBaseContext(), date, Toast.LENGTH_LONG).show();
+			
 		}
 	};
+	
+	//add time
+	private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+		
+		@Override
+		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+			// TODO Auto-generated method stub
+			time=hourOfDay+":"+minute;
+			TextView timeView = (TextView)findViewById(R.id.pickedTime);
+			timeView.setText(time);
+		}
+	};
+		
+	
+	//dialog callback
 	protected Dialog onCreateDialog(int id) {
 
-		if (id == dialog_id)
+		if (id == 1)
 			return new DatePickerDialog(this, mDateSetListener, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		if (id==0)
+			return new TimePickerDialog(this, mTimeSetListener, 1/*hour*/, 1/*minute*/, false);
 		return null;
 	}
 
 	
 
 	public void setHour(View v) {
-	
+		showDialog(0);
 	}
 
 	public void setDate(View v) {
 
-		showDialog(dialog_id);
+		showDialog(1);
 
 	}
 

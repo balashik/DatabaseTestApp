@@ -56,8 +56,9 @@ public class MainActivity extends Activity {
 					String title = cursor.getString(DBAdapter.COL_TASKTITLE);
 					String description = cursor.getString(DBAdapter.COL_TASKDESCRIPTION);
 					String date = cursor.getString(DBAdapter.COL_DATE);
+					String time = cursor.getString(DBAdapter.COL_TIME);
 					
-					tasks.add(new Task(id, title,description,date));
+					tasks.add(new Task(id, title,description,date,time));
 					//System.out.println("title: "+ title + " description: "+ description +"date:"+ date);
 					
 				}while(cursor.moveToNext());

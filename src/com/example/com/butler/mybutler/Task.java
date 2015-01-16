@@ -6,15 +6,17 @@ public class Task {
 	private String title;
 	private String description;
 	private String date;
+	private String time;
 
 	
 
-	public Task(int id,String title, String description ,String date) {
+	public Task(int id,String title, String description ,String date, String time) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.date = date;
+		this.time = time;
 	}
 
 	public int getId() {
@@ -41,11 +43,18 @@ public class Task {
 		this.description = description;
 	}
 	
-	public String getdate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(String time) {
 		this.date = date;
+	}
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 }
